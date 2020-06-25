@@ -32,6 +32,19 @@ Pentru aflarea pozitiei actuale in care urmeaza sa se ia o decizie:
 
 **i,j=get_coordonate_of_actual_cell()**
 
+Gridul construit poate fi accesat:
+
+**Pcb.Grid[i][j]**
+
+Iar acesta contine urmatoarele campuri:
+
+class Point:
+    **i=None
+    j=None
+    decisionPoint=None
+    direction=None
+    startPoint=0
+    endPoint=0**
 
 ![alt text](https://github.com/tudorikas/Pcb/blob/master/diagram.png?raw=true)
 
