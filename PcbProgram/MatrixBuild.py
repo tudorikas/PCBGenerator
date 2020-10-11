@@ -4,6 +4,9 @@ import pygame
 
 from GridData import Point
 
+
+
+
 WHITE = (129, 130, 133)
 GREEN = (128, 0, 0)
 BLUE = (0, 0, 255)
@@ -185,6 +188,26 @@ class PcbGraphical:
         newPoint = Point(i, j, 4)
         self.grid[i][j] = newPoint
 
+    def add_ru_from_up_cell(self,x,y):
+        [i, j] = self.change_coord(self.myround(y), self.myround(x))
+        pygame.draw.rect(self.screen, GREEN,
+                         (x + ((self.widthOfCell / 3) * 2), y + (self.widthOfCell / 3), (self.widthOfCell / 3),
+                          (self.widthOfCell / 3)),
+                         0)  # draw a single width cell
+        pygame.draw.rect(self.screen, GREEN,
+                         (x + (self.widthOfCell / 3), y + (self.widthOfCell / 3), (self.widthOfCell / 3),
+                          (self.widthOfCell / 3)),
+                         0)  # draw a single width cell
+        pygame.draw.rect(self.screen, GREEN,
+                         (x + (self.widthOfCell / 3), y, (self.widthOfCell / 3),
+                          (self.widthOfCell / 3)),
+                         0)  # draw a single width cell
+
+        # pygame.draw.rect(self.screen, GREEN, (x + 1, y + 1, self.widthOfCell - 1, self.widthOfCell - 1), 0)
+        pygame.display.update()
+        self.road.append((i, j, 4, 0))
+        newPoint = Point(i, j, 4)
+        self.grid[i][j] = newPoint
     # First element
 
 
@@ -353,6 +376,7 @@ class PcbGraphical:
     # Add new cell
 
     def add_new_cell(self, direction):
+        #print(direction)
         time.sleep(self.sleep)
         # check if we are at the first cell
         if self.road[-1][3] == 0 and self.road[-1][2] == 0:
